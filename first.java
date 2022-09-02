@@ -37,12 +37,24 @@ class Linkedlist{
     //Node curr=head;
     Node slow=head;
     Node fast=head;
-    while(fast!=null && fast.next!=null){
+    while(fast!=null && fast.next!=null&& fast.next.next!=null){
         slow =slow.next;
         fast=fast.next.next;
     }
-    slow=slow.next.next;
-    
+    slow.next=slow.next.next;
+   }
+   public void reverse(){
+    Node curr=head;
+    Node next=null;
+    Node prev=null;
+    while(curr!=null){
+        next=curr.next;
+        curr.next=prev;
+        prev=curr;
+        curr=next;
+    }
+    head=prev;
+
    }
 }
 
@@ -59,6 +71,8 @@ class first{
        list.add(1);
        list.print();
        list.removeMid();
+       list.print();
+       list.reverse();
        list.print();
 
     }
