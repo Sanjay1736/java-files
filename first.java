@@ -33,6 +33,17 @@ class Linkedlist{
      }
      head=head.next;
    }
+   public void removeMid(){
+    //Node curr=head;
+    Node slow=head;
+    Node fast=head;
+    while(fast!=null && fast.next!=null){
+        slow =slow.next;
+        fast=fast.next.next;
+    }
+    slow=slow.next.next;
+    
+   }
 }
 
 
@@ -47,7 +58,7 @@ class first{
        list.add(2);
        list.add(1);
        list.print();
-       list.remove();
+       list.removeMid();
        list.print();
 
     }
