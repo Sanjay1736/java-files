@@ -54,8 +54,18 @@ class Linkedlist{
         curr=next;
     }
     head=prev;
-
    }
+    public void addInMiddle( int val){
+      Node slow=head;
+       Node fast=head;
+       while(fast!=null&&fast.next!=null&&fast.next.next!=null){
+             slow=slow.next;
+              fast=fast.next.next;
+        }
+       Node newNode=new Node(val);
+       newNode.next=slow.next;
+        slow.next=newNode;
+    }
 }
 
 
@@ -73,6 +83,8 @@ class first{
        list.removeMid();
        list.print();
        list.reverse();
+       list.print();
+       list.addInMiddle(9);
        list.print();
 
     }
