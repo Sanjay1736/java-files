@@ -19,6 +19,20 @@ class Linkedlist{
     newNode.next = head;
     head=newNode;
    }
+   public void addLast(int val){
+        if(head==null){
+            Node newNode=new Node(val);
+            head=newNode;
+            return;
+        }
+        Node temp=head;
+        while(temp.next!=null){
+            temp=temp.next;
+        }
+        Node newNode=new Node(val);
+        newNode.next=temp.next;
+        temp.next=newNode;
+   }
    public void print(){
     Node temp=head;
     while(temp!=null){
@@ -66,6 +80,31 @@ class Linkedlist{
        newNode.next=slow.next;
         slow.next=newNode;
     }
+    public static  Node merge(Node list1,Node list2){
+        Node dummyNode=new Node(0);
+        Node tail=dummyNode;
+        while(true){
+            if(list1==null){
+                tail.next=list2;
+                break;
+            }
+            if(list2==null){
+                tail.next=list1;
+                break;
+            }
+            if(list1.val<=list2.val){
+                tail.next=list1;
+                list1=list1.next;
+            }
+            if(list1.val>=list2.val){
+                tail.next=list2;
+                list2=list2.next;
+            } 
+            tail=tail.next;
+        }
+        return dummyNode.next;
+
+    }
 }
 
 
@@ -73,19 +112,35 @@ class Linkedlist{
 
 class first{
     public static void main(String[] args) {
-       Linkedlist list=new Linkedlist();
-       list.add(5);
-       list.add(4);
-       list.add(3);
-       list.add(2);
-       list.add(1);
-       list.print();
-       list.removeMid();
-       list.print();
-       list.reverse();
-       list.print();
-       list.addInMiddle(9);
-       list.print();
-
+       Linkedlist list1=new Linkedlist();
+       Linkedlist list2=new Linkedlist();
+    //    list.add(5);
+    //    list.add(4);
+    //    list.add(3);
+    //    list.add(2);
+    //    list.add(1);
+    //    list.print();
+    //    list.removeMid();
+    //    list.print();
+    //    list.reverse();
+    //    list.print();
+    //    list.addInMiddle(9);
+    //    list.print();
+    //    merge()
+    list1.addLast(1);
+    list1.addLast(2);
+    list1.addLast(5);
+    list1.addLast(6);
+    list1.addLast(7);
+    list1.addLast(9);
+    list1.addLast(10);
+    list2.addLast(11);
+    list2.addLast(13);
+    list2.addLast(16);
+    list2.addLast(19);
+    list2.addLast(20);
+    list1.print();
+    list2.print();
+    list1.head=merge(list1, list2);
     }
 }
